@@ -22,9 +22,12 @@ def print_header():
 def event_time(today, month, day):
     today = datetime.today()
     event = datetime(2019, month, day)
-    event_date = (event - today)
-
-    return event_date
+    if event.date() == today.date():
+        print('Your event is today!!!!')
+        return None
+    else:
+        event_date = (event - today)
+        return event_date
 
     
 
