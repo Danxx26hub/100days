@@ -1,15 +1,19 @@
 from datetime import datetime
+import schedule
+
 
 __author__ = 'danxx26@gmail'
 
 def main():
+    
     print_header()
 
     today = datetime.today().day
     month = int(input('please enter month [MM] '))
     day = int(input('please enter a date [DD]'))
     
-    print(f'your event is {event_time(today, month, day)} from today')
+    if event_time(today, month, day):
+        print(f'your event is {event_time(today, month, day)} from today')
 
 
 def print_header():
@@ -33,7 +37,7 @@ def event_time(today, month, day):
 
 
 if __name__ == '__main__':
-    main()
+    schedule.every(24).hours.do(main())
 
 
     
