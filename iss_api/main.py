@@ -1,7 +1,16 @@
-import requests
+from api_data import provide_endpoints, get_astronauts
 
 
-url = "http://api.open-notify.org/astros.json"
-headers = {'Content-Type' : 'text/json'}
-response = requests.get(url, headers=headers)
-print(response)
+
+def main():
+    people = provide_endpoints().astronauts
+    get_astronauts(people)
+    print(get_astronauts(people))
+
+
+
+
+
+
+if __name__ == "__main__":
+    main()
