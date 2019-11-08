@@ -9,9 +9,9 @@ ctx = ssl.create_default_context()
 ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 con = connect(
-    username='test',
-    password='New@yellow22',
-    host='192.168.88.1',
+    username='user',
+    password='*********',
+    host='0.0.0.0',
     ssl_wrapper=ctx.wrap_socket,
     port=8729
     )
