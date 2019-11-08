@@ -1,6 +1,7 @@
 import ssl
 import sys
 from librouteros import connect
+import subprocess
 
 
 
@@ -19,11 +20,16 @@ s = True
 while s:
     print('select options:\n')
 
-    choice = input("""select H for health status, L for log, P for system profile, X to exit:\n""".center(50))
+    choice = input("""select I for system info,
+                     H for health status, 
+                     L for log, P for system profile, 
+                     X to exit:\n""".center(50))
+
     print()
     choice = choice.lower()
     if choice == "h":
         print("getting health info")
+        command = {'p': 'print'}
         health = con(cmd="/system/health/print")
         for stats in health:
             for voltage, temp in stats.items():
@@ -58,6 +64,12 @@ while s:
             print(f'{device} : {usage}')
         print("Done!")
         print()
+    elif choice == 'i':
+        print('getting device info:\n')
+        system_info = con(cmd="/system/resource/print")
+        for sys_item in system_info:
+            for k, v in sys_item.items():
+                print(k, ' : ', v)
     else:
         print('exiting program')
         s = False
